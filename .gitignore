@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+
+**/.venv/
+services/STB/.venv/
+__pycache__/
+*.py[cod]
+
+
+.env
+*.db
+*.sqlite
+*.sqlite3
+
+benchmark/results/*.csv
