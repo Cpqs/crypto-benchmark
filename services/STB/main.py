@@ -43,14 +43,6 @@ def download(photo_id: str):
 
     return {
         "photo": photo_base64,
-        "download_time_ms": download_time_ms,
-        "decrypt_time_ms": decrypt_time_ms
+        "decrypt_time_ms": decrypt_time_ms,
+        "download_time_ms": download_time_ms
     }
-
-
-if __name__ == "__main__":
-    uvicorn.run(
-        app,
-        host="127.0.0.1",
-        port=8000
-    )
