@@ -91,6 +91,11 @@ STB использует `ProcessPoolExecutor`, поэтому полное вр
 
 ## Результаты
 
+Итоговый результат получается из 5 циклов (AES: /upload -> /download; STB: /upload -> /download). Изменить количество циклов можно в переменной **NUM_RUNS**:
+```text
+becnhmark/becnhmark.py
+```
+
 Все результаты сохраняются в:
 
 ```text
