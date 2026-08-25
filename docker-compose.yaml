@@ -1,4 +1,5 @@
 services:
+
   stb:
     build:
       context: ./services/STB
@@ -6,6 +7,11 @@ services:
     container_name: stb-service
     ports:
       - "8001:8001"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8001/docs')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     restart: unless-stopped
 
   aes:
@@ -15,4 +21,25 @@ services:
     container_name: aes-service
     ports:
       - "8002:8002"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8002/docs')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     restart: unless-stopped
+
+  benchmark:
+    build:
+      context: ./benchmark
+      dockerfile: Dockerfile
+    container_name: crypto-benchmark
+    depends_on:
+      aes:
+        condition: service_healthy
+      stb:
+        condition: service_healthy
+    environment:
+      AES_URL: http://aes:8002
+      STB_URL: http://stb:8001
+    volumes:
+      - ./benchmark/results:/app/results
