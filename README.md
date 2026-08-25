@@ -127,6 +127,8 @@ all_operations.csv    — отдельные измерения
 benchmark_chart.png   — графическое сравнение
 ```
 
+![benchmark_chart.png](benchmark/results/benchmark_chart.png)
+
 ## Интерпретация
 
 Например:
@@ -135,7 +137,7 @@ benchmark_chart.png   — графическое сравнение
 Encryption,0.0363,0.2614,AES,7.2082,86.1269
 ```
 
-означает, что AES в среднем выполняет encryption примерно в 7.2 раза быстрее STB.
+Означает, что AES в среднем выполняет encryption примерно в 7.2 раза быстрее STB.
 
 Важно учитывать, что `crypto_time_ms` и полное время сервиса — разные показатели.
 
